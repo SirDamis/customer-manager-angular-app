@@ -1,0 +1,61 @@
+<mat-toolbar>
+  <span>Customer Manager</span>
+  <span class="example-spacer"></span>
+  <mat-form-field class="example-full-width">
+    <mat-label>Search</mat-label>
+    <input matInput placeholder="Search..." [formControl]="searchControl"  type="text">
+  </mat-form-field>
+  
+  <button mat-raised-button (click)="goTo()"  class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>add</mat-icon> New User
+  </button>
+</mat-toolbar>
+
+
+<div class="">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> id. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email. </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Phone Column -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon (click)="viewCustomer(element)">visibility</mat-icon>
+        <mat-icon (click)="editCustomer(element)">edit</mat-icon>
+        <mat-icon (click)="deleteCustomer(element)">delete</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    
+  </table>
+
+  
+
+</div>
+  
+  
